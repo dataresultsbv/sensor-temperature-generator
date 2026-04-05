@@ -18,5 +18,8 @@ jobs:
             - name: Install requirements
               run: pip install -r requirements.txt
 
+            - name: debug list files
+              run: ls -R
+
             - name : Run simulation script
               run: simulation.py
