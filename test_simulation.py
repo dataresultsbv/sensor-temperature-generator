@@ -24,4 +24,4 @@ def test_timestamp_format():
     with open("measurements.json") as f:
         data = json.load(f)
 
-    datetime.fromisoformat(data[0]["timestamp"])  # should not fail
+    datetime.fromisoformat(data[0]["timestamp"])
