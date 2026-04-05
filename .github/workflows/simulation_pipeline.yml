@@ -32,6 +32,7 @@ jobs:
                 path: output/measurements.json
     test:
         runs-on: ubuntu-latest
+        needs: [ generate ]
 
         steps:
             - name: Checkout Repo
@@ -49,3 +50,6 @@ jobs:
               uses: actions/download-artifact@v5
               with:
                 name: measurements
+
+            - name: print output
+              run: ls
