@@ -37,4 +37,4 @@ if __name__ == "__main__":
     with open("measurements.json", "w") as f:
         json.dump(data, f, indent=2)
 
-    print("Generated measurements.json")
+    print(f"Generated measurements.json: {data}")
