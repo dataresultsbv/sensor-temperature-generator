@@ -52,4 +52,4 @@ jobs:
                 name: measurements
 
             - name: print output
-              run: ls
+              run: ls -R measurements
