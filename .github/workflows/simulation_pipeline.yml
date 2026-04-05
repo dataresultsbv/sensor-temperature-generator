@@ -50,6 +50,7 @@ jobs:
               uses: actions/download-artifact@v5
               with:
                 name: measurements
+                path: measurements
 
             - name: print output
               run: ls -R measurements
