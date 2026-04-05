@@ -1,4 +1,5 @@
 import json
+import os
 
 def generate_measurements(amount_of_sensors=3, amount_of_minutes=10):
     import random
@@ -34,7 +35,11 @@ def generate_measurements(amount_of_sensors=3, amount_of_minutes=10):
 if __name__ == "__main__":
     data = generate_measurements()
 
-    with open("measurements.json", "w") as f:
+    os.makedirs("output", exist_ok=True)
+
+    file_path = os.path.join("output", "measurements.json")
+
+    with open(file_path, "w") as f:
         json.dump(data, f, indent=2)
 
-    print(f"Generated measurements.json: {data}")
+    print(f"Generated {file_path} for : {data}")
