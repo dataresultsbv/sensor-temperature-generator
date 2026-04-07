@@ -36,7 +36,7 @@ if __name__ == "__main__":
     sensors = int(os.getenv("sensors"))
     minutes = int(os.getenv("minutes"))
 
-    data = generate_measurements()
+    data = generate_measurements(sensors, minutes)
 
     os.makedirs("output", exist_ok=True)
 
