@@ -5,6 +5,16 @@ on:
         branches:
             - main
             - 'feature/*'
+    workflow_dispatch:
+      inputs:
+        sensors:
+          description: "Number of sensors"
+          required: true
+          default: "3"
+        minutes:
+          description: "Number of minutes"
+          required: true
+          default: "10"
 
 jobs:
     generate:
@@ -23,7 +33,10 @@ jobs:
             - name: Install requirements
               run: pip install -r requirements.txt
 
-            - name : Run simulation script
+            - name: Run simulation script
+              env:
+                sensors: ${{ github.event.inputs.sensors || 3 }}
+                minutes: ${{ github.event.inputs.minutes || 10 }}
               run: python ./src/simulation.py
 
             - name: Upload artifact

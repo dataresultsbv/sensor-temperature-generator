@@ -1,7 +1,7 @@
 import json
 import os
 
-def generate_measurements(amount_of_sensors=3, amount_of_minutes=10):
+def generate_measurements(amount_of_sensors, amount_of_minutes):
     import random
     from datetime import datetime, timedelta
 
@@ -33,6 +33,9 @@ def generate_measurements(amount_of_sensors=3, amount_of_minutes=10):
 
 
 if __name__ == "__main__":
+    sensors = int(os.getenv("sensors"))
+    minutes = int(os.getenv("minutes"))
+
     data = generate_measurements()
 
     os.makedirs("output", exist_ok=True)
