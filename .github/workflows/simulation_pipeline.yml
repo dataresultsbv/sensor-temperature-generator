@@ -39,7 +39,7 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-artifact@v4
               with:
-                name: measurements
+                name: measurements_${{ matrix.sensors }}_${{ matrix.minutes }}
                 path: output/measurements_${{ matrix.sensors }}_${{ matrix.minutes }}.json
     test:
         runs-on: ubuntu-latest
