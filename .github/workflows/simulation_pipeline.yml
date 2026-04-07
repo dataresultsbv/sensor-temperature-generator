@@ -6,18 +6,15 @@ on:
             - main
             - 'feature/*'
     workflow_dispatch:
-      inputs:
-        sensors:
-          description: "Number of sensors"
-          required: true
-          default: "3"
-        minutes:
-          description: "Number of minutes"
-          required: true
-          default: "10"
 
 jobs:
     generate:
+        continue-on-error: true
+        strategy:
+          matrix:
+            sensors: [1, 2, 3]
+            minutes: [1, 5, 10]
+          max-parallel: 3
         runs-on: ubuntu-latest
 
         steps:
@@ -35,8 +32,8 @@ jobs:
 
             - name: Run simulation script
               env:
-                sensors: ${{ github.event.inputs.sensors || 3 }}
-                minutes: ${{ github.event.inputs.minutes || 10 }}
+                sensors: ${{ matrix.sensors }}
+                minutes: ${{ matrix.minutes }}
               run: python ./src/simulation.py
 
             - name: Upload artifact
@@ -69,3 +66,13 @@ jobs:
 
             - name: print output
               run: ls -R measurements
+
+#           - name: Run tests
+#             id: testscript
+
+#           - name: Upload test report
+#             if: steps.testscript.outcome == 'failure'
+#             uses: actions/upload-artifact@v5
+#             with:
+#               name: test_report
+#               path: test.json
