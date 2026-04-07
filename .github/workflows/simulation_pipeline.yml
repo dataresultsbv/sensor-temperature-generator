@@ -1,4 +1,4 @@
-name: Sesnor simulation pipeline
+name: Sensor simulation pipeline
 
 on:
     push:
