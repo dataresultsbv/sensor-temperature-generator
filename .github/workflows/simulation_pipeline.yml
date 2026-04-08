@@ -63,5 +63,5 @@ jobs:
               if: failure() && steps.testscript.outcome == 'failure'
               uses: actions/upload-artifact@v5
               with:
-                name: test_report
-                path: test.json
+                name: sensor-test-report
+                path: report.html
