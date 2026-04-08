@@ -21,14 +21,8 @@ jobs:
             - name: Checkout Repo
               uses: actions/checkout@v5
 
-            - name: Setup Python
-              uses: actions/setup-python@v5
-              with:
-                python-version: '3.11'
-                cache: 'pip'
-
-            - name: Install requirements
-              run: pip install -r requirements.txt
+            - name: Setup Python & Install requirements
+              uses: ./.github/actions/setup-env
 
             - name: Run simulation script
               env:
@@ -49,14 +43,8 @@ jobs:
             - name: Checkout Repo
               uses: actions/checkout@v5
 
-            - name: Setup Python
-              uses: actions/setup-python@v5
-              with:
-                python-version: '3.11'
-                cache: 'pip'
-
-            - name: Install requirements
-              run: pip install -r requirements.txt
+            - name: Setup Python & Install requirements
+              uses: ./.github/actions/setup-env
 
             - name: Download Artifact
               uses: actions/download-artifact@v5

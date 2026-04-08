@@ -1,0 +1,13 @@
+name: 'Setup Python and install requirements'
+description: 'Install the Python version on the machine and install the requirements for the project'
+runs:
+    using: 'composite'
+    steps:
+        - name: Setup Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.11'
+            cache: 'pip'
+        - name: Install requirements
+          run: pip install -r requirements.txt
+          shell: bash
