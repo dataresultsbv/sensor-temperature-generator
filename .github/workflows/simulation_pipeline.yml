@@ -9,6 +9,8 @@ on:
 
 jobs:
     generate:
+        permissions:
+          contents: read
         continue-on-error: true
         strategy:
           matrix:
@@ -36,6 +38,8 @@ jobs:
                 name: measurements_${{ matrix.sensors }}_${{ matrix.minutes }}
                 path: output/measurements.json
     test:
+        permissions:
+          contents: read
         runs-on: ubuntu-latest
         needs: [ generate ]
 
