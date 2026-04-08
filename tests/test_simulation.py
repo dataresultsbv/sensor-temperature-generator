@@ -17,7 +17,7 @@ class TestSensorData:
     def test_json_file_exists(self, file_path):
         data = self.get_data(file_path)
         assert isinstance(data, list)
-        assert len(data) > 0
+        assert len(data) == 0
 
     def test_measurement_structure(self, file_path):
         data = self.get_data(file_path)

@@ -55,9 +55,6 @@ jobs:
               with:
                 path: measurements
 
-            - name: print output
-              run: ls -R measurements
-
             - name: Run tests
               id: testscript
               run: pytest --html=report.html --self-contained-html
