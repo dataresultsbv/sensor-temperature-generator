@@ -50,7 +50,7 @@ jobs:
             - name: Setup Python & Install requirements
               uses: ./.github/actions/setup-env
 
-            - name: Download Artifact
+            - name: Download Artifacts
               uses: actions/download-artifact@v5
               with:
                 path: measurements
@@ -58,12 +58,13 @@ jobs:
             - name: print output
               run: ls -R measurements
 
-#           - name: Run tests
-#             id: testscript
+            - name: Run tests
+              id: testscript
+              run: pytest --html=report.html --self-contained-html
 
-#           - name: Upload test report
-#             if: steps.testscript.outcome == 'failure'
-#             uses: actions/upload-artifact@v5
-#             with:
-#               name: test_report
-#               path: test.json
+            - name: Upload test report
+              if: failure() && steps.testscript.outcome == 'failure'
+              uses: actions/upload-artifact@v5
+              with:
+                name: test_report
+                path: test.json
